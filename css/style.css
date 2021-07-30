@@ -1,0 +1,177 @@
+:root {
+  --title-font: "Comfortaa", cursive;
+  --list-font: "Comfortaa", cursive;
+  --title-color: hsl(33, 20%, 89%);
+  --bg-color-p: hsl(182, 35%, 28%);
+  --icon-size: 1.5rem;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  margin: 2em;
+}
+
+.App {
+  display: grid;
+  min-width: 80vw;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 5em 2em 1fr;
+  row-gap: 1.5em;
+}
+
+.title {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  text-align: center;
+  font-family: var(--title-font);
+  color: var(--title-color);
+  background: var(--bg-color-p);
+  line-height: 2.5;
+  border-radius: 5px;
+}
+
+.todoForm {
+  grid-column: 1/-1;
+  grid-row: 2/3;
+  display: flex;
+}
+
+.newTodo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filterTodo {
+  height: 100%;
+  background-color: var(--bg-color-p);
+  color: white;
+  font-family: var(--list-font);
+  border-radius: 3px;
+  padding: 0 0 0 1.5ch;
+}
+
+.todoContainer {
+  grid-column: 1/-1;
+  grid-row: 3/-1;
+}
+
+.todoInput {
+  width: 80%;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--bg-color-p);
+  color: white;
+  font-size: 0.9rem;
+  font-family: var(--list-font);
+  padding: 1.5ch;
+}
+
+.todoList {
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.todo {
+  position: relative;
+  display: flex;
+  height: 100%;
+  box-shadow: 0 0 5px #fff;
+  margin-bottom: 0.7em;
+}
+
+.todoItem {
+  font-family: var(--list-font);
+  font-weight: 500;
+  font-size: 2ch;
+  width: 80%;
+  padding: 0.5rem;
+}
+
+.todoButton {
+  margin: auto;
+}
+
+.todoButton,
+.completeButton,
+.removeButton {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  vertical-align: bottom;
+  border: none;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+}
+
+.completeButton,
+.removeButton {
+  margin: auto;
+}
+
+.todoButton {
+  background-image: url(../assets/svg-icons/plus.png);
+  background-size: var(--icon-size);
+}
+
+.completeButton {
+  background-image: url(../assets/svg-icons/checked.png);
+  background-size: var(--icon-size);
+}
+
+.removeButton {
+  background-image: url(../assets/svg-icons/trash-bin.png);
+  background-size: var(--icon-size);
+}
+
+/* before - after pseudo element style  */
+
+.todo::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: hsl(0, 1%, 33%);
+  z-index: 999;
+  left: -100%;
+  top: 50%;
+  opacity: 0;
+  transition: left 500ms ease-in-out, opacity 350ms ease-out 150ms;
+}
+.todo.complete.todo::before {
+  opacity: 1;
+  left: -20%;
+}
+
+
+/* hover styles */
+
+.todo:hover,
+.todo:focus-within {
+  box-shadow: 0 0 10px #fff;
+}
+
+.todoInput:focus-visible,
+.filterTodo:focus-visible,
+.filterTodo:hover,
+.todoInput:hover {
+  outline: none;
+  box-shadow: 0 0 2px #fff, 0 0 5px #000;
+}
+
+.todoButton:hover,
+.completeButton:hover,
+.removeButton:hover {
+  box-shadow: 0 0 5px #fff, 0 0 15px #fff;
+}

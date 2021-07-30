@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <script src="./script/main.js" defer></script>
+    <title>Todo App</title>
+</head>
+
+<body>
+    <div id="root">
+
+        <div class="App">
+            <div class="title">
+                <h1>Todo App</h1>
+            </div>
+            <form class="todoForm" action="#">
+                <div class="newTodo">
+                    <input class="todoInput" type="text" name="todoInput" id="todoInput">
+                    <button id="todoButton" class="todoButton"></button>
+                </div>
+                <div class="todoSelect">
+                    <select class="filterTodo" name="filterTodo" id="filterTodo">
+                        <option value="all">All</option>
+                        <option value="complete">Complete</option>
+                        <option value="uncomplete">Uncomplete</option>
+                    </select>
+                </div>
+            </form>
+            <div id="todoContainer" class="todoContainer">
+                <ul id="todoList" class="todoList"></ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
