@@ -19,7 +19,12 @@ const addTodo = todoButton.addEventListener("click", (e) => {
         (this.id = Math.random() * 1000);
     }
   }
+  if (todoInput.value === "") {
+    return false;
+  }
+
   const todo = new Todo((this.todo = todoInput.value));
+
   todoList.push(todo);
   todoInput.value = "";
   renderTodo(todo);
@@ -47,8 +52,6 @@ const renderTodo = (todo) => {
   removeButton.addEventListener("click", removeEventHandler);
 };
 
-//find todo object with id
-
 //completeButton event handler
 const completeEventHandler = (e) => {
   e.preventDefault();
@@ -64,8 +67,6 @@ const completeEventHandler = (e) => {
       } else {
         todoList[i].status = false;
       }
-    } else {
-      return;
     }
   }
 };
@@ -81,9 +82,42 @@ const removeEventHandler = (e) => {
     if (todoList[i].id === Number(todoElement.id)) {
       todoList.splice(i, 1);
       todoUl.removeChild(todoElement);
-      console.log(todoList);
-    } else {
-      return;
     }
+  }
+};
+
+filterTodo.onchange = () => {
+  const todoLi = document.querySelectorAll(".todo");
+
+  switch (filterTodo.value) {
+    case "complete":
+      todoLi.forEach((item) => {
+        if (item.classList.contains("complete")) {
+          item.style.display = "";
+        } else {
+          item.style.display = "none";
+        }
+      });
+      break;
+
+    case "uncomplete":
+      todoLi.forEach((item) => {
+        if (item.classList.contains("complete")) {
+          item.style.display = "none";
+        } else {
+          item.style.display = "";
+        }
+      });
+      break;
+
+    case "all":
+      todoLi.forEach((item) => {
+        item.style.display = "";
+      });
+      break;
+
+    default:
+      console.log("all");
+      break;
   }
 };
